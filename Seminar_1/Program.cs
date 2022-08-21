@@ -4,7 +4,7 @@
 Console.WriteLine("Введите первое число: ");
 int numberA = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine("Введите второе число: ");
+Console.Write("Введите второе число: ");
 int numberB = Convert.ToInt32(Console.ReadLine());
 
 if (numberA > numberB)
@@ -20,13 +20,13 @@ if (numberB > numberA)
 /*
 // Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
 
-Console.WriteLine("Введите первое число: ");
+Console.Write("Введите первое число: ");
 int numberA = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine("Введите второе число: ");
+Console.Write("Введите второе число: ");
 int numberB = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine("Введите третье число: ");
+Console.Write("Введите третье число: ");
 int numberC = Convert.ToInt32(Console.ReadLine());
 
 int max = numberA;
@@ -47,7 +47,7 @@ Console.WriteLine($"max = {max}");
 /*
 // Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
 
-Console.WriteLine("Введите число: ");
+Console.Write("Введите число: ");
 int number = Convert.ToInt32(Console.ReadLine());
 
 if (number % 2 == 0)
@@ -59,6 +59,26 @@ else
     Console.WriteLine("нет");
 }
 */
+
+
+// Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+
+Console.Write("Введите число:");
+int number = Convert.ToInt32(Console.ReadLine());
+
+int i = 1;
+
+while (i <= number)
+{
+    if (i % 2 == 0)
+    {
+        Console.Write(i + " ");
+    }
+    i++;
+}
+
+
+
 
 
 
