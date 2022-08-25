@@ -15,7 +15,9 @@ int secondDigit = FindSecondDigit(randNumber);
 
 Console.WriteLine($"Second Digit in {randNumber} is {secondDigit}");
 
+*/
 
+/*
 
 // Задача 2: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 
@@ -24,7 +26,10 @@ int number = Convert.ToInt32(Console.ReadLine());
 
 Console.Write($"В числе {number} ");
 
-if (number < 0) number = number * (-1); // если ввели отрицательное число - сделаем его положительным
+if (number < 0) // если ввели отрицательное число - сделаем его положительным
+{
+    number = number * (-1);    
+}
 
 int count = 0; // счетчик цифр
 int number_for_count = number; // создали переменную для счетчика
@@ -50,11 +55,20 @@ else
     Console.WriteLine($"Третья цифра - {number}."); 
 }
 
-
 */
+
+/*
 
 // Задача 3: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
 
-6 -> да
-7 -> да
-1 -> нет
+Console.Write("Введите цифру, обозначающую день недели: ");
+int number = Convert.ToInt32(Console.ReadLine());
+if (number > 0 & number < 8)
+    if (number < 6)
+        Console.Write($"{number} -> нет");
+    else
+        Console.Write($"{number} -> да");
+else
+    Console.Write("Не балуй! Такого дня недели не бывает.");
+
+*/
