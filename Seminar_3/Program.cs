@@ -39,10 +39,12 @@ Console.Write("Введите число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
 int i = 1;
+int temp = 1;
+Console.Write($"{num} -> ");
 
 while (i <= num)
 {
-    i = Convert.ToInt32(Math.Pow(i, 3));
-    Console.Write($"{i} ");
+    temp = Convert.ToInt32(Math.Pow(i, 3));
+    Console.Write($"{temp} ");
     i++;
 }
