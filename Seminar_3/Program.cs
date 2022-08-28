@@ -39,7 +39,7 @@ Console.Write("Введите число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
 int i = 1;
-int temp = 1;
+int temp;
 Console.Write($"{num} -> ");
 
 while (i <= num)
