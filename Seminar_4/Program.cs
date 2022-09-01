@@ -1,4 +1,5 @@
-﻿// Задача 25. Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+﻿/*
+// Задача 25. Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
 // 3, 5 -> 243
 // 2, 4 -> 16
 
@@ -32,7 +33,7 @@ int FindExponent(int numberA, int numberB)
 
 int exponent = FindExponent(numberA, numberB);
 Console.WriteLine($"{numberA}, {numberB} -> {exponent}");
-
+*/
 
 
 /*
@@ -64,19 +65,24 @@ Console.WriteLine(sum); // пишем сумму
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
-void CreateRandomArray()
-{
-    Console.Write("Сколько элементов в массиве нужно? ");
-    int quantity = Convert.ToInt32(Console.ReadLine());
-    int [] numbers = new int[quantity];
+// Вводные данные для формирования массива
+Console.Write("Сколько элементов в массиве нужно? ");
+int quantity = Convert.ToInt32(Console.ReadLine());
+Console.Write("Укажите минимально-возможное число в массиве: ");
+int minDigit = Convert.ToInt32(Console.ReadLine());
+Console.Write("Укажите максимально-возможное число в массиве: ");
+int maxDigit = Convert.ToInt32(Console.ReadLine());
 
+void CreateRandomArray()  // создаем массив из н-ного количества рандомных чисел указанного диапазона
+{
+    int [] numbers = new int[quantity];
     Console.Write("[");
     for (int i = 0; i < numbers.Length; i++)
      {
-        numbers [i] = new Random().Next(0, 11);
+        numbers [i] = new Random().Next(minDigit, maxDigit + 1);
         Console.Write(Method (i) + ", ");
      }
-    Console.Write("\b\b]");
+    Console.Write("\b\b]");  // удаление двух последних символов и закрытие прямоугольной скобки
 
     int Method (int a)
     {
