@@ -46,7 +46,7 @@ int Location(string axisName, string pointName)
     return Convert.ToInt16(Console.ReadLine());
 }
 
-double FindSqrt(double x1, double x2,  // извлекаем кв. корень из суммы квадратов разниц
+double FindSqrt(double x1, double x2,  // извлекаем корень из суммы квадратов разниц
                 double y1, double y2, 
                 double z1, double z2){
   return Math.Sqrt(Math.Pow((x2-x1), 2) +
