@@ -59,11 +59,30 @@ Console.WriteLine(sum); // пишем сумму
 */
 
 
-
+/*
 // Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
+void CreateRandomArray()
+{
+    Console.Write("Сколько элементов в массиве нужно? ");
+    int quantity = Convert.ToInt32(Console.ReadLine());
+    int [] numbers = new int[quantity];
 
+    Console.Write("[");
+    for (int i = 0; i < numbers.Length; i++)
+     {
+        numbers [i] = new Random().Next(0, 11);
+        Console.Write(Method (i) + ", ");
+     }
+    Console.Write("\b\b]");
 
+    int Method (int a)
+    {
+        return numbers[a];
+    }
+}
 
+CreateRandomArray();
+*/
