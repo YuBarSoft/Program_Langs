@@ -58,7 +58,7 @@ void CreateRandomArray()
     {
         numbers[i] = new Random().Next(minDigit, maxDigit + 1);
         Console.Write(Method (i) + ", ");
-        if (i % 2 != 0)  // если число НЕчетное
+        if (i % 2 != 0)  // если индекс НЕчетный
             sum += numbers[i]; 
     }
     Console.Write("\b\b] -> " + sum);  //  удаление двух последних символов и закрытие прямоугольной скобки
