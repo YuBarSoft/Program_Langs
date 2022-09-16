@@ -41,20 +41,14 @@ void SortDescending(int[,] array) // сортируем по убыванию
 {
     Console.WriteLine("Пересортировываем массив по убыванию элементов каждой строки:");
 	for (int i = 0; i < array.GetLength(0); i++)
-	{
 		for (int j = 0; j < array.GetLength(1); j++)
-		{
 			for (int k = 0; k < array.GetLength(1) - 1; k++)
-			{
 				if (array[i, k] < array[i, k + 1])
 				{
 					int temp = array[i, k + 1];
 					array[i, k + 1] = array[i, k];
 					array[i, k] = temp;
 				}
-			}
-		}
-	}
 }
 
 CreateRandom2dArray(newArray);
@@ -109,18 +103,18 @@ void SumNumbers(int[,] array) // суммируем элементы в стро
     int indexLine = 0;
     
     for (int i = 0; i < array.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
+            sum += array[i, j];        
+            Console.WriteLine($"Cумма элементов {i+1} строки = {sum}");
+        
+        if (sum < minData)
         {
-            int sum = 0;
-            for (int j = 0; j < array.GetLength(1); j++)
-                sum += array[i, j];        
-                Console.WriteLine($"Cумма элементов {i+1} строки = {sum}");
-            
-            if (sum < minData)
-            {
-                minData = sum;
-                indexLine = i+1;
-            }
+            minData = sum;
+            indexLine = i+1;
         }
+    }
 
     Console.WriteLine($"\nСтрока с наименьшей суммой элементов ({minData}): {indexLine}\n");
 }
@@ -215,8 +209,8 @@ Console.WriteLine();
 
 
 
-
-// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+/*
+// Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 // Массив размером 2 x 2 x 2
 // 66(0,0,0) 25(0,1,0)
 // 34(1,0,0) 41(1,1,0)
@@ -225,64 +219,60 @@ Console.WriteLine();
 
 Console.Clear();
 
-int[,,] CreateMatrix(int row, int col, int dep, int min, int max)
+// Создаем матрицу с запрашиваемыми параметрами
+int[,,] CreateMatrix(int x, int y, int z, int min, int max)
 {
-    int[,,] matrix = new int[row, col, dep];
+    int[,,] matrix = new int[x, y, z];
     for (int i = 0; i < matrix.GetLength(0); i++)
-    {
         for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            for (int k = 0; k < matrix.GetLength(2); k++) { matrix[i, j, k] = GetUniqueValue(matrix, min, max, i, j, k); }
-        }
-    }
+            for (int k = 0; k < matrix.GetLength(2); k++)
+                matrix[i, j, k] = GetUniqueValue(matrix, min, max, i, j, k);
     return matrix;
 }
 
+// Уникальность элементов матрицы
 int GetUniqueValue(int[,,] matrix, int min, int max, int i, int j, int k)
 {
     int value = default;
     bool exist = true;
     while (exist)
     {
-        bool _break = false;
-        value = new Random().Next(min, max + 1);
+        bool hereBreak = false;
+        value = new Random().Next(min, max);
         for (int i1 = 0; i1 < matrix.GetLength(0); i1++)
         {
-            if (_break) { break; }
+            if (hereBreak) {break;}
             for (int j1 = 0; j1 < matrix.GetLength(1); j1++)
             {
-                if (_break) { break; }
+                if (hereBreak) {break;}
                 for (int k1 = 0; k1 < matrix.GetLength(2); k1++)
                 {
-                    if (matrix[i1, j1, k1] == value) { _break = true; break; }
-                    if (i1 == i && j1 == j && k1 == k) { exist = false; }
+                    if (matrix[i1, j1, k1] == value) {hereBreak = true; break;}   
+                    if (i1 == i && j1 == j && k1 == k) {exist = false;}
                 }
             }
         }
     }
     return value;
 }
+
+// Вывод матрицы на печать
 void PrintMatrix(int[,,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
-    {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for (int k = 0; k < matrix.GetLength(2); k++) { Console.Write($"{matrix[i, j, k],1}({i},{j},{k})  "); }
+            for (int k = 0; k < matrix.GetLength(2); k++)
+                Console.Write($"{matrix[i, j, k],1}({i},{j},{k}) ");
             Console.WriteLine();
         }
-    }
-}
-void Main()
-{
-    int[,,] array3D = CreateMatrix(2, 2, 2, 10, 100);
-    PrintMatrix(array3D);
-    Console.WriteLine();
 }
 
-Main();
-
-
+// The End
+int[,,] array3D = CreateMatrix(2, 2, 2, 10, 100); // задаем параметры матрицы 2х2х2 с элементами от 10 до 99
+PrintMatrix(array3D);
+Console.WriteLine();
+*/
 
 
 
@@ -294,37 +284,48 @@ Main();
 // 11 16 15 06
 // 10 09 08 07
 
+Console.Clear();
 
+Console.Write("Укажите размер массива: ");
+int size = Convert.ToInt32(Console.ReadLine());
+int[,] nums = new int[size, size];
 
+int num = 1;
+int i = 0;
+int j = 0;
 
+while (num <= size * size)
+{
+    nums[i, j] = num;
 
+    if (i <= j+1 && i+j < size-1)
+        j++;
+    else if (i < j && i+j >= size-1)
+        i++;
+    else if (i >= j && i+j > size-1)
+        j--;
+    else
+        i--;
 
+    num++;
+}
 
+// Вывод массива на печать
+void PrintArray(int[,] array)
+{
+    Console.WriteLine();
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] < 10) {Console.Write("0");} // если число меньше 10, то добавим 0 перед ним
+            Console.Write(array[i, j] + "  ");
+        }
 
+        Console.WriteLine();        
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// The End
+PrintArray(nums);
+Console.WriteLine();
