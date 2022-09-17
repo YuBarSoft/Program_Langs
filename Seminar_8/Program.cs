@@ -40,15 +40,15 @@ void Show2dArray(int[,] array) // выводим массив
 void SortDescending(int[,] array) // сортируем по убыванию
 {
     Console.WriteLine("Пересортировываем массив по убыванию элементов каждой строки:");
-	for (int i = 0; i < array.GetLength(0); i++)
-		for (int j = 0; j < array.GetLength(1); j++)
-			for (int k = 0; k < array.GetLength(1) - 1; k++)
-				if (array[i, k] < array[i, k + 1])
-				{
-					int temp = array[i, k + 1];
-					array[i, k + 1] = array[i, k];
-					array[i, k] = temp;
-				}
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            for (int k = 0; k < array.GetLength(1) - 1; k++)
+                if (array[i, k] < array[i, k + 1])
+                {
+                    int temp = array[i, k + 1];
+                    array[i, k + 1] = array[i, k];
+                    array[i, k] = temp;
+                }
 }
 
 CreateRandom2dArray(newArray);
@@ -79,9 +79,9 @@ int[,] newArray = new int[m, n];
 
 void CreateRandom2dArray(int[,] array) // забиваем массив рандомными числами от -100 до 100
 {
-	for (int i = 0; i < m; i++)
-		for (int j = 0; j < n; j++)
-			newArray[i, j] = Convert.ToInt32(new Random().Next(-100, 100 + 1));
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            newArray[i, j] = Convert.ToInt32(new Random().Next(-100, 100 + 1));
 }
 
 void Show2dArray(int[,] array) // выводим массив
