@@ -1,72 +1,85 @@
-﻿// Задача 64: Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
+﻿/*
+Console.Clear();
+
+Console.WriteLine("Задача 64: Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке от M до N.");
 // M = 1; N = 5. -> ""1, 2, 3, 4, 5""
 // M = 4; N = 8. -> ""4, 6, 7, 8""
+Console.Write("Введите число M: ");
+int numberM = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число N: ");
+int numberN = Convert.ToInt32(Console.ReadLine());
 
-// Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+int minDigit = Math.Min(numberM,numberN); // узнаем меньшее число
+
+void ShowNumbers(int numberM, int numberN)
+{
+    int maxDigit = Math.Max(numberM,numberN); // узнаем большее число
+
+    if (minDigit-1 != maxDigit)
+    {
+        ShowNumbers(minDigit-1, maxDigit-1);
+        Console.Write($"{maxDigit}, ");
+    }
+}
+
+Console.Write($"\nM = {numberM}, N = {numberN} -> \"");
+ShowNumbers(numberM, numberN);
+Console.Write("\b\b\"\n\n");  // удаление двух последних символов (запятая и пробел), закрытие кавычек и перенос строк
+*/
+
+
+
+/*
+Console.Clear();
+
+Console.WriteLine("Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.");
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
+Console.Write("Введите число M: ");
+int numberM = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число N: ");
+int numberN = Convert.ToInt32(Console.ReadLine());
 
-// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
-// m = 2, n = 3 -> A(m,n) = 29
+int minDigit = Math.Min(numberM,numberN); // узнаем меньшее число
+int sumDigits = 0;
 
-// Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от 1 до N.
-
-void ShowNumbers(int n)
+void ShowNumbers(int numberM, int numberN)
 {
-    
-    Console.Write($"{n} ");
-    if (n > 1)
-        ShowNumbers(n-1);
-    Console.Write($"{n} ");
-        
+    int maxDigit = Math.Max(numberM,numberN); // узнаем большее число
+
+    if (minDigit-1 != maxDigit)
+    {
+        ShowNumbers(minDigit-1, maxDigit-1);
+        Console.Write($"{maxDigit}+");
+        sumDigits += maxDigit;
+    }
 }
 
-// Напишите программу, которая будет принимать на вход число и возвращать сумму его цифр.
+Console.Write($"\nM = {numberM}, N = {numberN} -> ");
+ShowNumbers(numberM, numberN);
+Console.Write($"\b={sumDigits}\n\n");  // удаление двух последних символов (запятая и пробел), закрытие кавычек и перенос строк
+*/
 
-int SumDigits(int num)
+
+
+/*
+Console.Clear();
+
+Console.WriteLine("Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.");
+// m = 2, n = 3 -> A(m,n) = 9
+// https://vk.com/@talkcodetome-funkciya-akkermana-post-dlya-teh-kto-sovsem-ne-sechet-v-mate
+
+Console.Write("Введите число M: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число N: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+int AckerMan(int m, int n)
 {
-    if (num > 9)
-        return num % 10 + SumDigits(num /10);
-    else
-        return num;
+    if (m == 0) return n + 1;
+    else if (n == 0) return AckerMan(m - 1, 1);
+    else return AckerMan(m - 1, AckerMan(m, n - 1));
 }
 
-// Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
-void ShowNumbersDiap(int n, int m)
-{
-    
-    Console.Write($"{Math.Max(n,m)} "); 
-    if (Math.Max(n,m) != Math.Min(n,m))
-        ShowNumbersDiap(Math.Max(n,m)-1, Math.Min(n,m));
-       
-        
-}
-
-
-// Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
-
-double PowerUp(double x, int pow)
-{ 
-  
-  if (pow < 0)
-  {
-    x = 1 / x;
-    pow = -pow;
-  }
-  if (pow != 0) return  x*PowerUp(x, pow-1);
-  else
-    return 1;  
-}
-
-
-
-
-Console.WriteLine(PowerUp(2,-2));
-
-//ShowNumbersDiap(-17, -3);
-
-//Console.WriteLine();
-//Console.WriteLine(SumDigits(54123));
-
-
-
+Console.WriteLine(AckerMan(m, n));
+*/
